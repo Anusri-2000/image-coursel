@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #f0f0f0; /
+        }
+        .container{
+            
+            justify-content: center;
+            overflow: hidden;
+            width: 500px; 
+            height: 300px; 
+            position: relative;
+            border: 2px solid #ccc;
+            background-color: white; 
+        }
+        .image img{
+            
+            height: 300px;
+            width: 500px;
+            display: none; 
+            
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease-in-out; 
+        }
+            
+        
+        .buttons{
+        
+        
+
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            /* padding: 0 20px; */
+        }
+        .buttons button{
+            padding: 10px 20px;
+            background-color: #ff0800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+        .buttons button:hover {
+            background-color: #b33300;
+        }
+
+    </style>
+</head>
+<body>
+    <div  id="cont" class="container">
+        <div class="image">
+            <img src="2.jpg">
+            <img src="1.png">
+            <img src="3.png">
+            <img src="4.jpg">
+        </div>
+        <div class="buttons">
+            <button id="bt1">previous</button>
+            <button id="bt2">next</button>
+        </div>
+    </div>
+
+    
+</body>
+<script>
+    let currentindex=0;
+    const images=cont.getElementsByTagName("img");
+    images[currentindex].style.display="block";
+
+    document.getElementById("bt1").addEventListener('click',()=>{
+        images[currentindex].style.display="none";
+        currentindex=(currentindex+1)%images.length;
+        images[currentindex].style.display="block";
+
+    })
+
+    document.getElementById("bt2").addEventListener('click',()=>{
+        images[currentindex].style.display="none";
+        currentindex=(currentindex-1+images.length)%images.length;
+        images[currentindex].style.display="block";
+
+    })
+
+</script>
+</html>
